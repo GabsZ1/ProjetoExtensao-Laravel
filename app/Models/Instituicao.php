@@ -5,7 +5,25 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Instituicao extends Model
+
+
+namespace App\Models;
+
+use Illuminate\Foundation\Auth\User as Authenticatable;
+
+class Instituicao extends Authenticatable
+
 {
-    use HasFactory;
+    protected $fillable = [ //pra permitir quais campos podem ser acessado pra nao dar erro de segurança
+        'nome',
+        'email',
+        'cnpj',
+        'telefone',
+        'responsavel',
+        'descricao',
+        'endereco',
+        'senha', 
+    ];
+
+
 }

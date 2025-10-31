@@ -2,13 +2,6 @@
 
 namespace App\Models;
 
-use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-
-
-
-namespace App\Models;
-
 use Illuminate\Foundation\Auth\User as Authenticatable;
 
 class Instituicao extends Authenticatable
@@ -22,8 +15,12 @@ class Instituicao extends Authenticatable
         'responsavel',
         'descricao',
         'endereco',
-        'senha', 
+        'senha',
     ];
 
+    public function doacoes()
+    {
+        return $this->hasMany(Doacao::class);
+    }
 
 }

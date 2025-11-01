@@ -1,0 +1,128 @@
+/* ============================
+   Dashboard Instituição
+   ============================ */
+
+/* Fonte geral */
+body {
+    font-family: 'Nunito', sans-serif;
+    background-color: #eef1f8;
+    margin: 0;
+    display: flex;
+    min-height: 100vh;
+}
+
+/* Sidebar */
+.sidebar {
+    width: 230px;
+    background: linear-gradient(180deg, #1e3a8a, #1d4ed8);
+    color: #fff;
+    padding: 30px 20px;
+    display: flex;
+    flex-direction: column;
+    box-shadow: 3px 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.sidebar h2 {
+    font-weight: 700;
+    margin-bottom: 30px;
+}
+
+.sidebar a {
+    color: #fff;
+    text-decoration: none;
+    margin-bottom: 18px;
+    display: block;
+    font-weight: 500;
+    transition: all 0.2s ease-in-out;
+}
+
+.sidebar a:hover {
+    color: #cbd5e1;
+    transform: translateX(3px);
+}
+
+/* Conteúdo principal */
+.main-content {
+    flex: 1;
+    background-color: #eef1f8;
+    padding: 40px;
+}
+
+/* Cabeçalho */
+.dashboard-header h1 {
+    font-weight: 700;
+    color: #1e3a8a;
+}
+
+.dashboard-header p {
+    color: #475569;
+    margin-bottom: 30px;
+}
+
+/* Cards */
+.cards {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+}
+
+.card-dashboard {
+    background: #fff;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 300px;
+    padding: 20px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    border-left: 4px solid #2563eb;
+    transition: transform 0.2s;
+}
+
+.card-dashboard:hover {
+    transform: translateY(-3px);
+}
+
+/* Título do card */
+.card-dashboard h5 {
+    font-weight: 700;
+    color: #1e3a8a;
+    margin-bottom: 15px;
+}
+
+/* Barra de progresso */
+.progress {
+    height: 10px;
+    border-radius: 10px;
+    background-color: #e2e8f0;
+}
+
+.progress-bar {
+    background-color: #2563eb;
+}
+
+/* Texto pequeno */
+.text-muted {
+    color: #64748b !important;
+    font-size: 0.9rem;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    body {
+        flex-direction: column;
+    }
+
+    .sidebar {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-around;
+        text-align: center;
+    }
+
+    .main-content {
+        padding: 20px;
+    }
+
+    .cards {
+        flex-direction: column;
+    }
+}

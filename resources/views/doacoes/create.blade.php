@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.instituicao')
+
+@section('title', 'Doações')
 
 @section('content')
+
 <div class="container">
     <h1>Nova Doação</h1>
 
@@ -51,4 +54,5 @@
         <a href="{{ route('doacoes.index') }}" class="btn btn-secondary">Voltar</a>
     </form>
 </div>
+
 @endsection

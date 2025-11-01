@@ -1,6 +1,9 @@
-@extends('layouts.app')
+@extends('layouts.instituicao')
+
+@section('title', 'Doações')
 
 @section('content')
+
 <div class="container">
     <h1>Lista de Doações</h1>
 
@@ -47,4 +50,5 @@
         <p>Nenhuma doação cadastrada.</p>
     @endif
 </div>
+
 @endsection

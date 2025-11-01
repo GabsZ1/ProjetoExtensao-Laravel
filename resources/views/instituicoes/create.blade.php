@@ -1,6 +1,7 @@
 @extends('app')
 @section('title', 'Nova Instituição')
 @section('content')
+
 <h1>Nova Instituição</h1>
 
 <form action="{{ route('clients.store') }}" method="POST">
@@ -22,4 +23,5 @@
 
     <button class="btn btn-success" type="submit">Enviar</button>
 </form>
+
 @endsection

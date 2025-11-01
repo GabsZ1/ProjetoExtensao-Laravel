@@ -20,6 +20,7 @@ Route::get('/teste', function () {
 // rotas das instituições
 
 Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
+Route::post('/instituicoes', [InstituicaoController::class, 'store'])->name('instituicoes.store');
 
 Route::middleware(['auth', 'is_admin'])->group(function() {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');

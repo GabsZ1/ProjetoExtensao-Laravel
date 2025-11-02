@@ -15,6 +15,7 @@ class InstituicaoPendenteController extends Controller
             'nome' => 'required|string|max:255',
             'cnpj' => 'required|string|size:14|unique:instituicao_pendentes,cnpj',
             'email' => 'required|email|unique:instituicao_pendentes,email',
+            'password' => 'required|min:6|confirmed',
             'telefone' => 'required|string|max:20',
             'descricao' => 'required|string',
             'endereco' => 'required|string|max:255',

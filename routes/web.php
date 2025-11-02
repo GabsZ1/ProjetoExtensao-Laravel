@@ -33,11 +33,11 @@ Route::resource('doacoes', DoacaoController::class);
 //});
 
     // Admin - Instituições
-Route::get('/admin/instituicoes', [AdminController::class, 'instituicoesPendentes'])->name('admin.instituicoes');
-Route::post('/admin/instituicoes/aprovar/{id}', [AdminController::class, 'aprovar'])->name('admin.instituicoes.aprovar');
+Route::get('/admin/instituicoes', [AdminController::class, 'instituicoesPendentes'])->name('admin.instituicoes');     // Lista instituições pendentes
+Route::post('/admin/instituicoes/aprovar/{id}', [AdminController::class, 'aprovar'])->name('admin.instituicoes.aprovar');  // Aprovar instituição
 Route::delete('/admin/instituicoes/rejeitar/{id}', [AdminController::class, 'rejeitar'])->name('admin.instituicoes.rejeitar');
 
-
+// Admin - Instituições Aprovadas
 Route::get('/admin/instituicoes/aprovadas', [AdminController::class, 'instituicoesAprovadas'])->name('admin.instituicoes.aprovadas');
 Route::get('/admin/instituicoes/editar/{id}', [AdminController::class, 'editar'])->name('admin.instituicoes.editar');
 Route::put('/admin/instituicoes/atualizar/{id}', [AdminController::class, 'atualizar'])->name('admin.instituicoes.atualizar');

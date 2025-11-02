@@ -14,6 +14,7 @@ class InstituicaoPendente extends Model
         'nome',
         'cnpj',
         'email',
+        'password',
         'telefone',
         'descricao',
         'endereco',

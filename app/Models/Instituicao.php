@@ -11,6 +11,7 @@ class Instituicao extends Authenticatable
         'nome',
         'email',
         'cnpj',
+        'password', 
         'telefone',
         'responsavel',
         'descricao',

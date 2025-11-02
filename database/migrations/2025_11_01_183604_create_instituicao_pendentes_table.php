@@ -19,6 +19,7 @@ return new class extends Migration
             $table->string('nome');
             $table->string('cnpj', 14);
             $table->string('email')->unique();
+            $table->string('password');
             $table->string('telefone');
             $table->text('descricao');
             $table->string('endereco');

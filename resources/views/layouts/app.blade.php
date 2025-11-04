@@ -5,44 +5,39 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
-
     <link rel="icon" href="{{ asset('images/logo-sem-fundo.png') }}" type="image/png">
 
     <title>Admin</title>
 
-    <!-- Fonts -->
-    <link rel="dns-prefetch" href="//fonts.bunny.net">
+    <!-- Fonts e CSS -->
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
-
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm">
+        <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
                 <a class="navbar-brand" href="{{ url('admin') }}">
-                    Bem-vindo, {{ Auth::user()->name ?? 'Admin' }}!
+                    Bem-vindo, {{ Auth::user()->nome ?? 'Admin' }}!
                 </a>
 
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
                     data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
+                    aria-expanded="false" aria-label="{{ __('Alternar navegação') }}">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Left Side Of Navbar -->
+                    <!-- Links à esquerda -->
                     <ul class="navbar-nav me-auto">
-                        {{-- Exemplo de link adicional --}}
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ url('admin/#') }}">Relatórios</a>
+                            <a class="nav-link" href="{{ url('admin/relatorios') }}">Relatórios</a>
                         </li>
                     </ul>
 
-                    <!-- Right Side Of Navbar -->
+                    <!-- Botão de sair -->
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">
                             <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">

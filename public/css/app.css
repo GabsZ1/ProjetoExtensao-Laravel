@@ -1,38 +1,80 @@
 /* Importa a fonte Nunito */
 @import url('https://fonts.bunny.net/css?family=Nunito');
 
-/* Importa o Bootstrap via CDN (equivalente ao @import 'bootstrap/scss/bootstrap') */
+/* Importa o Bootstrap via CDN */
 @import url('https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css');
 
-/* Variáveis básicas (você pode ajustar conforme quiser) */
+/* ==========================
+   VARIÁVEIS GERAIS
+========================== */
 :root {
     --bs-body-font-family: 'Nunito', sans-serif;
-    --bs-primary: #0d6efd;
-    --bs-secondary: #6c757d;
-    --bs-success: #198754;
-    --bs-danger: #dc3545;
-    --bs-warning: #ffc107;
-    --bs-info: #0dcaf0;
+    --color-primary: #3d33cc;  /* azul arroxeado suave */
+    --color-primary-hover: #2c24a0;
+    --color-accent: #635bff;
+    --color-light: #f8f9fa;
+    --color-dark: #212529;
 }
 
-/* Estilos personalizados (exemplo) */
+/* ==========================
+   BASE
+========================== */
 body {
     font-family: var(--bs-body-font-family);
-    background-color: #f8f9fa;
-    color: #212529;
+    background-color: var(--color-light);
+    color: var(--color-dark);
 }
 
-/* Navbar personalizada */
+/* ==========================
+   NAVBAR PERSONALIZADA
+========================== */
 .navbar {
-    border-radius: 0;
+    background-color: var(--color-primary) !important;
+    color: #fff;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.08);
 }
 
-/* Botões */
-.btn-primary {
-    background-color: var(--bs-primary);
-    border-color: var(--bs-primary);
+.navbar-brand {
+    color: #fff !important;
+    font-weight: 600;
+    letter-spacing: 0.3px;
 }
 
-.btn-primary:hover {
-    background-color: #0b5ed7;
+.navbar .nav-link {
+    color: #fff !important;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.navbar .nav-link:hover {
+    color: var(--color-light) !important;
+    text-decoration: underline;
+}
+
+/* ==========================
+   BOTÃO "SAIR"
+========================== */
+.btn-outline-danger {
+    color: #fff !important;
+    border-color: #fff !important;
+    transition: all 0.2s ease-in-out;
+}
+
+.btn-outline-danger:hover {
+    background-color: #fff !important;
+    color: var(--color-primary) !important;
+    border-color: #fff !important;
+}
+
+/* ==========================
+   AJUSTES RESPONSIVOS
+========================== */
+@media (max-width: 768px) {
+    .navbar-brand {
+        font-size: 1rem;
+    }
+    .btn-outline-danger {
+        padding: 4px 8px;
+        font-size: 0.85rem;
+    }
 }

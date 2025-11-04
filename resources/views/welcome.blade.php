@@ -17,6 +17,10 @@
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
 
+    <!-- máscara automática no preenchimento (CNPJ e TELEFONE) -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
 </head>
 
 <body>
@@ -166,5 +170,13 @@
         </div> <!-- container -->
     </main>
 </body>
+
+{{-- Máscaras automáticas --}}
+<script>
+    $(document).ready(function() {
+        $('#cnpj').mask('00.000.000/0000-00');
+        $('#telefone').mask('(00) 00000-0000');
+    });
+</script>
 
 </html>

@@ -23,7 +23,7 @@ class InstituicaoController extends Controller
     {
         $data = $request->validate([
             'nome' => 'required|string|max:255',
-            'cnpj' => 'required|string|max:14|unique:instituicaos',
+            'cnpj' => 'required|string|max:18|unique:instituicaos',
             'email' => 'required|email|unique:instituicaos',
             'password' => 'required|min:6|confirmed',
             'telefone' => 'required|string',

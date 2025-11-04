@@ -1,4 +1,4 @@
-@extends('layouts.app') 
+@extends('layouts.app')
 
 @section('content')
 <div class="container mt-4">
@@ -33,7 +33,7 @@
                         <td>{{ $i->responsavel }}</td>
                         <td>{{ $i->cnpj }}</td>
                         <td>
-                            <a href="{{ route('admin.instituicoes.editar', $i->id) }}" class="btn btn-primary btn-sm">Editar</a> 
+                            <a href="{{ route('admin.instituicoes.editar', $i->id) }}" class="btn btn-primary btn-sm">Editar</a>
                             <form action="{{ route('admin.instituicoes.deletar', $i->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 @method('DELETE')
@@ -47,5 +47,6 @@
     @endif
 
     <a href="{{ route('admin.instituicoes') }}" class="btn btn-secondary mt-3">Voltar para Pendentes</a>
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Voltar para o Painel</a>
 </div>
 @endsection

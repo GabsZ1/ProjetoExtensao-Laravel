@@ -49,5 +49,8 @@
             </tbody>
         </table>
     @endif
+
+    <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Voltar para o Painel</a>
+    
 </div>
 @endsection

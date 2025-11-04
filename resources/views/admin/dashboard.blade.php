@@ -3,7 +3,7 @@
 @section('content')
 <div class="container mt-4">
     <h1>Painel de Administração</h1>
-    <p>Bem-vindo, administrador</p>
+    <p>Gerencie aqui as Instituições que utilizam o sistema!</p>
 
     <div class="mt-4">
         <div class="row">

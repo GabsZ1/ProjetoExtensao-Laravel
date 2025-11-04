@@ -8,7 +8,7 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome'); // sua view pública
+    return view('welcome');
 });
 
 //Rota que envia o cadastro da instituicao

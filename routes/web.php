@@ -18,8 +18,6 @@ Route::post('/instituicoes_pendentes', [InstituicaoPendenteController::class, 's
 Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
 Route::post('/instituicoes', [InstituicaoController::class, 'store'])->name('instituicoes.store');
 
-
- 
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -32,7 +30,7 @@ Route::resource('doacoes', DoacaoController::class);
    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 //});
 
-    // Admin - Instituições
+// Admin - Instituições
 Route::get('/admin/instituicoes', [AdminController::class, 'instituicoesPendentes'])->name('admin.instituicoes');     // Lista instituições pendentes
 Route::post('/admin/instituicoes/aprovar/{id}', [AdminController::class, 'aprovar'])->name('admin.instituicoes.aprovar');  // Aprovar instituição
 Route::delete('/admin/instituicoes/rejeitar/{id}', [AdminController::class, 'rejeitar'])->name('admin.instituicoes.rejeitar');

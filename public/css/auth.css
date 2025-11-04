@@ -1,14 +1,13 @@
 /* =======================
-   ESTILO GERAL - LOGIN / CADASTRO
+   ESTILO GERAL - LOGIN/CADASTRO
    ======================= */
 
 body {
     background-color: #f5f6fa;
     font-family: 'Nunito', sans-serif;
-    margin: 0;
-    padding: 0;
 }
 
+/* Estrutura */
 .container-principal {
     display: flex;
     align-items: center;
@@ -25,7 +24,7 @@ body {
     background: white;
 }
 
-/* ======== LADO ESQUERDO (IMAGEM) ======== */
+/* Lado esquerdo */
 .lado-esquerdo {
     background-color: #4935E3;
     flex: 1;
@@ -40,24 +39,22 @@ body {
     border-radius: 10px;
 }
 
-/* ======== LADO DIREITO (FORMULÁRIO) ======== */
+/* Lado direito */
 .lado-direito {
     flex: 1.2;
-    padding: 50px;
+    padding: 60px;
 }
 
 .titulo {
     font-weight: 800;
     color: #4935E3;
-    text-align: center;
-    margin-bottom: 25px;
 }
 
-/* ======== FORMULÁRIO ======== */
+/* Inputs */
 .form-control {
     border: 1.5px solid #4935E3;
     border-radius: 8px;
-    box-shadow: none;
+    padding: 12px;
 }
 
 .form-control:focus {
@@ -65,15 +62,13 @@ body {
     box-shadow: 0 0 0 0.2rem rgba(73, 53, 227, 0.15);
 }
 
-/* ======== BOTÕES ======== */
+/* Botão */
 .btn-auth {
     background-color: #4935E3;
     color: white;
     font-weight: bold;
-    width: 100%;
     border-radius: 8px;
     padding: 10px;
-    border: none;
     transition: 0.2s;
 }
 
@@ -81,10 +76,10 @@ body {
     background-color: #392ac2;
 }
 
-/* ======== LINKS E TEXTOS ======== */
+/* Links */
 .texto-link {
     text-align: center;
-    margin-top: 15px;
+    font-size: 14px;
 }
 
 .texto-link a {
@@ -96,23 +91,14 @@ body {
     text-decoration: underline;
 }
 
-/* ======== RESPONSIVIDADE ======== */
+/* Responsividade */
 @media (max-width: 900px) {
     .card-auth {
         flex-direction: column;
         width: 90%;
-        height: auto;
-    }
-
-    .lado-esquerdo {
-        padding: 30px;
     }
 
     .lado-esquerdo img {
         width: 200px;
-    }
-
-    .lado-direito {
-        padding: 30px;
     }
 }

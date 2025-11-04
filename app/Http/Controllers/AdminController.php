@@ -28,7 +28,7 @@ class AdminController extends Controller
             'nome' => $pendente->nome,
             'cnpj' => $pendente->cnpj,
             'email' => $pendente->email,
-            'password' => Hash::make($senha), 
+            'password' => Hash::make($pendente->password), 
             'telefone' => $pendente->telefone,
             'descricao' => $pendente->descricao,
             'endereco' => $pendente->endereco,

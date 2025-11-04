@@ -5,7 +5,6 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
-    <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" href="{{ asset('images/logo-sem-fundo.png') }}" type="image/png">
@@ -56,13 +55,11 @@
             <div class="row">
                 <div class="col-10 mx-auto">
 
-                    <!-- Hero / Introdução -->
+                    <!-- Introdução -->
                     <section class="py-5 text-center">
 
                         <div class="d-flex align-items-center justify-content-center gap-3">
-                            <!-- Logo -->
                             <img src="{{ asset('images/logo-sem-fundo.png') }}" alt="Logo Conexão Solidária" style="height: 60px;">
-                            <!-- Nome do site -->
                             <h1 class="display-4 fw-bold mb-0">Conexão Solidária</h1>
                         </div>
                         <p class="lead mb-4">
@@ -130,7 +127,7 @@
                                         </div>
                                         <div class="mb-3">
                                             <label for="cnpj" class="form-label">CNPJ</label>
-                                            <input type="text" name="cnpj" class="form-control" id="cnpj" required maxlength="14">
+                                            <input type="text" name="cnpj" class="form-control" id="cnpj" required maxlength="18">
                                         </div>
                                         <div class="mb-3">
                                             <label for="email" class="form-label">E-mail de Contato</label>
@@ -152,6 +149,15 @@
                                             <label for="descricao" class="form-label">Descrição da Instituição</label>
                                             <textarea name="descricao" class="form-control" id="descricao" rows="3" required></textarea>
                                         </div>
+                                        <div class="mb-3">
+                                            <label for="password" class="form-label">Senha</label>
+                                            <input type="password" name="password" class="form-control" id="password" required minlength="6">
+                                        </div>
+                                        <div class="mb-3">
+                                            <label for="password_confirmation" class="form-label">Confirmar Senha</label>
+                                            <input type="password" name="password_confirmation" class="form-control" id="password_confirmation" required minlength="6">
+                                        </div>
+
                                         <div class="d-grid">
                                             <button type="submit" class="btn btn-primary btn-lg" style="background-color: #186aa5">Enviar cadastro</button>
                                         </div>
@@ -163,11 +169,9 @@
                             </div>
                         </div>
                     </section>
-
-
-                </div> <!-- col-8 mx-auto -->
-            </div> <!-- row -->
-        </div> <!-- container -->
+                </div>
+            </div>
+        </div>
     </main>
 </body>
 

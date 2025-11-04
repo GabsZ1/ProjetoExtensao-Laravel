@@ -17,7 +17,7 @@ return new class extends Migration
             $table->id();
             $table->timestamps();
             $table->string('nome');
-            $table->string('cnpj', 14);
+            $table->string('cnpj', 18);
             $table->string('email')->unique();
             $table->string('password');
             $table->string('telefone');

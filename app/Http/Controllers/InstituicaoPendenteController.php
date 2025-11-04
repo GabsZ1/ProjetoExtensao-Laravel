@@ -13,7 +13,7 @@ class InstituicaoPendenteController extends Controller
         // Validação básica dos campos
         $request->validate([
             'nome' => 'required|string|max:255',
-            'cnpj' => 'required|string|size:14|unique:instituicao_pendentes,cnpj',
+            'cnpj' => 'required|string|size:18|unique:instituicao_pendentes,cnpj',
             'email' => 'required|email|unique:instituicao_pendentes,email',
             'password' => 'required|min:6|confirmed',
             'telefone' => 'required|string|max:20',

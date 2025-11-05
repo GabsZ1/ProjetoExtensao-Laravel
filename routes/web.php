@@ -25,7 +25,6 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // rotas das doações
 Route::resource('doacoes', DoacaoController::class);
 
-
 //Route::middleware(['auth', 'is_admin'])->group(function () {
    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 //});

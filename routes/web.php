@@ -18,7 +18,7 @@ Route::post('/instituicoes_pendentes', [InstituicaoPendenteController::class, 's
 Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
 Route::post('/instituicoes', [InstituicaoController::class, 'store'])->name('instituicoes.store');
 
-Auth::routes();
+Auth::routes(['register' => false]);
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 

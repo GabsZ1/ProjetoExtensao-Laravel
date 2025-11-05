@@ -47,11 +47,10 @@
                     <!-- Senha -->
                     <div class="mb-3">
                         <label for="senha" class="form-label">Senha</label>
-                        <input id="senha" type="password"
-                            class="form-control @error('senha') is-invalid @enderror"
-                            name="senha" required>
-                        @error('senha')
-                        <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
+                        <input id="password" type="password"
+                            class="form-control @error('password') is-invalid @enderror" name="password" required>
+                        @error('password')
+                            <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
                         @enderror
                     </div>
 

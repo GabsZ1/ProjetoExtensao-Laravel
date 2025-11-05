@@ -25,9 +25,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // rotas das doações
 Route::resource('doacoes', DoacaoController::class);
 
-//Route::middleware(['auth', 'is_admin'])->group(function () {
+Route::middleware(['auth', 'is_admin'])->group(function () {
    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-//});
+});
 
 // Admin - Instituições
 Route::get('/admin/instituicoes', [AdminController::class, 'instituicoesPendentes'])->name('admin.instituicoes');     // Lista instituições pendentes

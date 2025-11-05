@@ -15,10 +15,6 @@ class InstituicaoController extends Controller
         ]);
     }
 
-    public function create(){
-        
-    }
-
     public function store(Request $request)
     {
         $data = $request->validate([

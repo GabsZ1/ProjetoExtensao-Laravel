@@ -15,7 +15,11 @@ Route::get('/', function () {
 Route::post('/instituicoes_pendentes', [InstituicaoPendenteController::class, 'store'])->name('instituicoes_pendentes.store');
 
 // rotas das instituições
-Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
+
+Route::middleware(['auth:instituicao', 'isInstituicao'])->group(function () {
+    Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
+});
+
 Route::post('/instituicoes', [InstituicaoController::class, 'store'])->name('instituicoes.store');
 
 Auth::routes(['register' => false]);
@@ -25,9 +29,9 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // rotas das doações
 Route::resource('doacoes', DoacaoController::class);
 
-//Route::middleware(['auth', 'is_admin'])->group(function () {
-   Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-//});
+Route::middleware(['auth:web', 'isAdmin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+});
 
 // Admin - Instituições
 Route::get('/admin/instituicoes', [AdminController::class, 'instituicoesPendentes'])->name('admin.instituicoes');     // Lista instituições pendentes

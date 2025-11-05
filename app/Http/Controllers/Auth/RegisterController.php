@@ -63,8 +63,8 @@ class RegisterController extends Controller
             'telefone' => ['required', 'string', 'regex:/^[0-9]{10,15}$/'],
             'responsavel' => ['required', 'string', 'max:255'],
             'descricao' => ['required', 'string'],
-            'endereco' => ['required', 'string', 'max:255'],  
-            'senha' => [
+            'endereco' => ['required', 'string', 'max:255'],
+            'password' => [
                 'required',
                 'min:6',
                 'regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\x])(?=.*[!$#%]).*$/',
@@ -89,7 +89,7 @@ class RegisterController extends Controller
             'responsavel' => $data['responsavel'],
             'descricao' => $data['descricao'],
             'endereco' => $data['endereco'],
-            'senha' => Hash::make($data['senha']),
+            'password' => Hash::make($data['password']),
         ]);
     }
 }

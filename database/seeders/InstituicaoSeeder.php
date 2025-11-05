@@ -11,7 +11,7 @@ class InstituicaoSeeder extends Seeder
     public function run(): void
     {
         Instituicao::updateOrCreate(
-            ['email' => 'contato@gmail.com'],
+            ['email' => 'contato@exemplo.com'],
             [
                 'nome' => 'Instituição Exemplo',
                 'cnpj' => '12.345.678/0001-99',

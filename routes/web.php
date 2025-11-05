@@ -15,7 +15,11 @@ Route::get('/', function () {
 Route::post('/instituicoes_pendentes', [InstituicaoPendenteController::class, 'store'])->name('instituicoes_pendentes.store');
 
 // rotas das instituições
-Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
+
+Route::middleware(['auth', 'isInstituicao'])->group(function () {
+    Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
+});
+
 Route::post('/instituicoes', [InstituicaoController::class, 'store'])->name('instituicoes.store');
 
 Auth::routes(['register' => false]);

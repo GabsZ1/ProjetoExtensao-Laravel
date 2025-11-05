@@ -6,21 +6,22 @@ use Closure;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
-class IsAdmin
+class IsInstituicao
 {
     public function handle(Request $request, Closure $next)
     {
-        // Se não estiver logado, manda pro login
+        // Verifica se o usuário está logado
         if (!Auth::check()) {
             return redirect()->route('login');
         }
 
-        // Se for admin, permite o acesso
+        // Verifica se NÃO é admin
         if (Auth::user()->is_admin) {
-            return $next($request);
+            // Se for admin, redireciona para o dashboard do admin
+            return redirect()->route('admin.dashboard');
         }
 
-        // Caso contrário, é instituição -> redireciona pro index dela
-        return redirect()->route('instituicao.index');
+        // Se chegou aqui, é instituição
+        return $next($request);
     }
 }

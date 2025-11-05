@@ -16,7 +16,7 @@ Route::post('/instituicoes_pendentes', [InstituicaoPendenteController::class, 's
 
 // rotas das instituições
 
-Route::middleware(['auth', 'isInstituicao'])->group(function () {
+Route::middleware(['auth:instituicao', 'isInstituicao'])->group(function () {
     Route::get('/instituicoes', [InstituicaoController::class, 'index'])->name('instituicoes.index');
 });
 
@@ -29,8 +29,8 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // rotas das doações
 Route::resource('doacoes', DoacaoController::class);
 
-Route::middleware(['auth', 'is_admin'])->group(function () {
-   Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
+Route::middleware(['auth:web', 'isAdmin'])->group(function () {
+    Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
 // Admin - Instituições

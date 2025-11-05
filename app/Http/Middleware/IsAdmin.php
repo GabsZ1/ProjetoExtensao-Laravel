@@ -10,17 +10,19 @@ class IsAdmin
 {
     public function handle(Request $request, Closure $next)
     {
-        // Se não estiver logado, manda pro login
-        if (!Auth::check()) {
+        // Verifica se está autenticado no guard 'web'
+        if (!Auth::guard('web')->check()) {
             return redirect()->route('login');
         }
 
-        // Se for admin, permite o acesso
-        if (Auth::user()->is_admin) {
+        $user = Auth::guard('web')->user();
+
+        // Se for admin → permite acesso
+        if ($user->is_admin) {
             return $next($request);
         }
 
-        // Caso contrário, é instituição -> redireciona pro index dela
-        return redirect()->route('instituicao.index');
+        // Caso contrário, redireciona para o dashboard da instituição
+        return redirect()->route('instituicao.dashboard');
     }
 }

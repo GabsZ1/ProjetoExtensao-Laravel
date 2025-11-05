@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Doacao;
 use App\Models\Instituicao;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 
 class DoacaoController extends Controller
 {
@@ -31,11 +32,12 @@ class DoacaoController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'instituicao_id' => 'required|exists:instituicaos,id',
             'nome_doador' => 'required|string|max:255',
         ]);
 
         $dados = $request->except('_token');
+
+        $dados['instituicao_id'] = Auth::id();
 
         Doacao::create($dados);
 

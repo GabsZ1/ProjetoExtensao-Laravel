@@ -11,16 +11,6 @@
         @csrf
 
         <div class="mb-3">
-            <label for="instituicao_id" class="form-label">Instituição</label>
-            <select name="instituicao_id" id="instituicao_id" class="form-control" required>
-                <option value="">Selecione...</option>
-                @foreach($instituicoes as $instituicao)
-                    <option value="{{ $instituicao->id }}">{{ $instituicao->nome }}</option>
-                @endforeach
-            </select>
-        </div>
-
-        <div class="mb-3">
             <label for="nome_doador" class="form-label">Nome do Doador</label>
             <input type="text" name="nome_doador" id="nome_doador" class="form-control" required>
         </div>

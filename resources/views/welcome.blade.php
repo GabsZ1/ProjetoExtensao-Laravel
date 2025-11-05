@@ -65,7 +65,7 @@
                         <p class="lead mb-4">
                             Cadastre sua instituição e organize suas doações de forma fácil e segura.
                         </p>
-                        <a href="#formulario-cadastro" class="btn btn-primary btn-lg" style="background-color: #186aa5">
+                        <a href="#formulario-cadastro" class="btn btn-primary btn-lg" style="background-color: #4935E3">
                             Cadastre sua instituição
                         </a>
                     </section>
@@ -159,7 +159,7 @@
                                         </div>
 
                                         <div class="d-grid">
-                                            <button type="submit" class="btn btn-primary btn-lg" style="background-color: #186aa5">Enviar cadastro</button>
+                                            <button type="submit" class="btn btn-primary btn-lg" style="background-color: #4935E3">Enviar cadastro</button>
                                         </div>
                                         <p class="text-muted mt-2 small text-center">
                                             O admin analisará suas informações e entrará em contato.

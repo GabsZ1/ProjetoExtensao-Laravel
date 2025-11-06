@@ -31,15 +31,22 @@ Route::resource('doacoes', DoacaoController::class);
 
 Route::middleware(['auth:web', 'is_admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-});
 
-// Admin - Instituições
+
+// admin - instituiçao pendentes
 Route::get('/admin/instituicoes', [AdminController::class, 'instituicoesPendentes'])->name('admin.instituicoes');     // Lista instituições pendentes
 Route::post('/admin/instituicoes/aprovar/{id}', [AdminController::class, 'aprovar'])->name('admin.instituicoes.aprovar');  // Aprovar instituição
 Route::delete('/admin/instituicoes/rejeitar/{id}', [AdminController::class, 'rejeitar'])->name('admin.instituicoes.rejeitar');
 
-// Admin - Instituições Aprovadas
+// admin - instituições aprovadas
 Route::get('/admin/instituicoes/aprovadas', [AdminController::class, 'instituicoesAprovadas'])->name('admin.instituicoes.aprovadas');
 Route::get('/admin/instituicoes/editar/{id}', [AdminController::class, 'editar'])->name('admin.instituicoes.editar');
 Route::put('/admin/instituicoes/atualizar/{id}', [AdminController::class, 'atualizar'])->name('admin.instituicoes.atualizar');
-Route::delete('/admin/instituicoes/deletar/{id}', [AdminController::class, 'deletar'])->name('admin.instituicoes.deletar');
+
+// rotas para ativar/desativar instituições
+Route::put('/admin/instituicoes/{id}/desativar', [AdminController::class, 'desativar'])
+    ->name('admin.instituicoes.desativar');
+
+Route::put('/admin/instituicoes/{id}/ativar', [AdminController::class, 'ativar'])
+    ->name('admin.instituicoes.ativar');
+    });

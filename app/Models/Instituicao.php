@@ -19,6 +19,7 @@ class Instituicao extends Authenticatable
         'responsavel',
         'descricao',
         'endereco',
+        'is_active',
     ];
 
     public function doacoes()

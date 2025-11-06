@@ -17,7 +17,7 @@ class AdminController extends Controller
     public function instituicoesPendentes()
     {
         $pendentes = InstituicaoPendente::all();
-        return view('admin.instituicoes.index', compact('pendentes')); // Passa as instituições pendentes para a view
+        return view('admin.instituicoes.index', compact('pendentes'));
     }
 
     public function aprovar($id)
@@ -28,11 +28,12 @@ class AdminController extends Controller
             'nome' => $pendente->nome,
             'cnpj' => $pendente->cnpj,
             'email' => $pendente->email,
-            'password' => Hash::make($pendente->password), 
+            'password' => Hash::make($pendente->password),
             'telefone' => $pendente->telefone,
             'descricao' => $pendente->descricao,
             'endereco' => $pendente->endereco,
             'responsavel' => $pendente->responsavel,
+            'is_active' => true,
         ]);
 
         $pendente->delete();
@@ -42,7 +43,7 @@ class AdminController extends Controller
 
     public function rejeitar($id)
     {
-        $pendente = InstituicaoPendente::findOrFail($id); 
+        $pendente = InstituicaoPendente::findOrFail($id);
         $pendente->delete();
 
         return back()->with('success', 'Instituição rejeitada e removida.');
@@ -57,10 +58,10 @@ class AdminController extends Controller
     public function editar($id)
     {
         $instituicao = Instituicao::findOrFail($id);
-        return view('admin.instituicoes.editar', compact('instituicao')); 
+        return view('admin.instituicoes.editar', compact('instituicao'));
     }
 
-    public function atualizar(Request $request, $id) 
+    public function atualizar(Request $request, $id)
     {
         $instituicao = Instituicao::findOrFail($id);
 
@@ -71,14 +72,32 @@ class AdminController extends Controller
             'descricao' => 'nullable|string',
             'endereco' => 'nullable|string',
             'responsavel' => 'nullable|string',
-            
         ]);
 
-        $instituicao->update($data);// atualiza com os dados validados
+        $instituicao->update($data);
 
         return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição atualizada com sucesso!');
     }
 
+    // Desativa a instituição
+    public function desativar($id)
+    {
+        $instituicao = Instituicao::findOrFail($id);
+        $instituicao->update(['is_active' => false]);
+
+        return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição desativada com sucesso!');
+    }
+
+    // Reativa a instituição
+    public function ativar($id)
+    {
+        $instituicao = Instituicao::findOrFail($id);
+        $instituicao->update(['is_active' => true]);
+
+        return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição ativada com sucesso!');
+    }
+
+    // Delete permanente (opcional)
     public function deletar($id)
     {
         $instituicao = Instituicao::findOrFail($id);

@@ -29,7 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // rotas das doações
 Route::resource('doacoes', DoacaoController::class);
 
-Route::middleware(['auth:web', 'is_admin'])->group(function () {
+//Route::middleware(['auth:web', 'is_admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 
 
@@ -49,4 +49,4 @@ Route::put('/admin/instituicoes/{id}/desativar', [AdminController::class, 'desat
 
 Route::put('/admin/instituicoes/{id}/ativar', [AdminController::class, 'ativar'])
     ->name('admin.instituicoes.ativar');
-    });
+   // });

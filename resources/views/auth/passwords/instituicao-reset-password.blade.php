@@ -35,7 +35,7 @@
                         <a class="nav-link" href="{{ route('home') }}" style="color: white;">Entrar</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="#formulario-cadastro" style="color: white;">Cadastrar</a>
+                        <a class="nav-link" href="/#formulario-cadastro" style="color: white;">Cadastrar</a>
                     </li>
                 </ul>
             </div>

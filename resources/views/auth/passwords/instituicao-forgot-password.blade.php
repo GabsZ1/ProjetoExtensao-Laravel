@@ -5,16 +5,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="icon" href="{{ asset('images/logo-sem-fundo.png') }}" type="image/png">
-    <title>Login</title>
+    <title>Recuperar Senha</title>
 
     <!-- Bootstrap via CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-
-    <!-- Seu CSS -->
     <link href="{{ asset('css/auth.css') }}" rel="stylesheet">
 
-    <!-- jQuery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 </head>
 
 <body>
@@ -36,6 +32,9 @@
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
+                        <a class="nav-link" href="{{ route('home') }}" style="color: white;">Entrar</a>
+                    </li>
+                    <li class="nav-item">
                         <a class="nav-link" href="/#formulario-cadastro" style="color: white;">Cadastrar</a>
                     </li>
                 </ul>
@@ -52,49 +51,48 @@
 
             <!-- Lado direito -->
             <div class="lado-direito">
-                <h2 class="titulo mb-4 text-center">LOGIN</h2>
+                <h2 class="titulo mb-4 text-center">Esqueci minha Senha</h2>
 
-                <form method="POST" action="{{ route('login') }}">
+                @if(session('success'))
+                <div class="alert alert-success">
+                    {{ session('success') }}
+                </div>
+                @endif
+
+                @if($errors->any())
+                <div class="alert alert-danger">
+                    {{ $errors->first() }}
+                </div>
+                @endif
+
+                <form method="POST" action="{{ route('instituicao.password.email') }}">
                     @csrf
 
                     <!-- Email -->
                     <div class="mb-3">
                         <label for="email" class="form-label">E-mail</label>
-                        <input id="email" type="email"
-                            class="form-control @error('email') is-invalid @enderror"
-                            name="email" value="{{ old('email') }}" required autofocus>
-                        @error('email')
-                        <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
-                        @enderror
-                    </div>
-
-                    <!-- Senha -->
-                    <div class="mb-3">
-                        <label for="senha" class="form-label">Senha</label>
-                        <input id="password" type="password"
-                            class="form-control @error('password') is-invalid @enderror" name="password" required>
-                        @error('password')
-                            <span class="invalid-feedback"><strong>{{ $message }}</strong></span>
-                        @enderror
+                        <input
+                            id="email"
+                            type="email"
+                            class="form-control"
+                            name="email"
+                            value="{{ old('email') }}"
+                            placeholder="Digite seu e-mail"
+                            required>
                     </div>
 
                     <!-- Botão -->
-                    <button type="submit" class="btn btn-auth w-100">Entrar</button>
+                    <button type="submit" class="btn btn-auth w-100">Enviar link de recuperação</button>
 
-                    <!-- Link de recuperação -->
-                    @if (Route::has('password.request'))
-                    <p class="texto-link mt-3">
-                        <a href="{{ route('instituicao.password.request') }}">Esqueci minha senha</a>
+                    <!-- Link para login -->
+                    <p class="texto-link mt-3 text-center">
+                        <a href="{{ route('login') }}">Voltar para login</a>
                     </p>
-                    @endif
 
                 </form>
             </div>
         </div>
     </div>
-
-    <!-- Bootstrap JS (opcional, apenas se quiser usar componentes dinâmicos) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>

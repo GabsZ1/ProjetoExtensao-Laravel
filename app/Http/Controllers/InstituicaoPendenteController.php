@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\InstituicaoPendente;
+use Illuminate\Support\Facades\Hash;
 
 class InstituicaoPendenteController extends Controller
 {
@@ -23,7 +24,11 @@ class InstituicaoPendenteController extends Controller
         ]);
 
         // Cria o registro
-        InstituicaoPendente::create($request->all());
+        $data = $request->all();
+        $data['password'] = Hash::make($request->password);
+
+        InstituicaoPendente::create($data);
+
 
         // Redireciona de volta com mensagem de sucesso
         return redirect()->back()->with('success', 'Cadastro enviado com sucesso! O admin irá analisá-lo.');

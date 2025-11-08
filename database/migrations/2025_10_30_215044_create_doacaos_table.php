@@ -23,10 +23,22 @@ return new class extends Migration
             // Campos da doação
             $table->string('nome_doador');
             $table->string('email_doador')->nullable();
+            $table->string('telefone_doador')->nullable();
             $table->decimal('valor', 10, 2)->nullable(); // caso a doação seja em dinheiro
-            $table->string('tipo')->nullable(); // ex: alimento, roupa, dinheiro, etc.
             $table->text('descricao')->nullable();
             $table->date('data_doacao')->nullable();
+            $table->enum('tipo', [
+                'dinheiro',
+                'alimento',
+                'roupa',
+                'brinquedo',
+                'higiene',
+                'eletronico',
+                'moveis',
+                'medicamentos',
+                'produtos_limpeza',
+                'equipamentos'
+            ])->default('dinheiro');
         });
     }
 

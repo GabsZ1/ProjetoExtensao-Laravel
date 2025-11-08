@@ -19,7 +19,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md shadow-sm">
             <div class="container">
-                <a class="navbar-brand" href="{{ url('admin') }}">
+                <a class="navbar-brand">
                     Bem-vindo, {{ Auth::user()->nome ?? 'Admin' }}!
                 </a>
 
@@ -30,13 +30,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Links à esquerda -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('admin/relatorios') }}">Relatórios</a>
-                        </li>
-                    </ul>
-
                     <!-- Botão de sair -->
                     <ul class="navbar-nav ms-auto align-items-center">
                         <li class="nav-item">

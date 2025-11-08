@@ -3,14 +3,16 @@
 namespace App\Models;
 
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Auth\Passwords\CanResetPassword;
 
 class Instituicao extends Authenticatable
-
 {
+    use Notifiable, CanResetPassword;
 
     protected $table = 'instituicaos';
 
-    protected $fillable = [ //pra permitir quais campos podem ser acessado pra nao dar erro de segurança
+    protected $fillable = [
         'nome',
         'email',
         'cnpj',
@@ -27,4 +29,8 @@ class Instituicao extends Authenticatable
         return $this->hasMany(Doacao::class);
     }
 
+        public function getRememberTokenName()
+    {
+        return null;
+    }
 }

@@ -46,8 +46,18 @@ class LoginController extends Controller
         if (Auth::guard('instituicao')->attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
+            $inst = Auth::guard('instituicao')->user();
+
+            if (! $inst->is_active) {
+                Auth::guard('instituicao')->logout();
+                return back()->withErrors([
+                    'email' => 'Sua instituição foi desativada pelo administrador.'
+                ])->onlyInput('email');
+            }
+
             return redirect()->route('instituicoes.index');
         }
+
 
         // 3️⃣ Se não encontrar em nenhum dos guards
         return back()->withErrors([

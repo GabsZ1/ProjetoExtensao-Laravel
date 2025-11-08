@@ -13,16 +13,17 @@ class Doacao extends Model
         'instituicao_id',
         'nome_doador',
         'email_doador',
+        'telefone_doador', // ✅ adicionado
         'valor',
         'tipo',
         'descricao',
         'data_doacao',
     ];
 
+
     // Relação com Instituicao
     public function instituicao()
     {
         return $this->belongsTo(Instituicao::class);
     }
-
 }

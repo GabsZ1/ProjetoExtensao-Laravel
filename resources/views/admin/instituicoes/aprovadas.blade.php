@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container mt-4">
@@ -56,12 +56,6 @@
                                     <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Deseja reativar esta instituição?')">Ativar</button>
                                 </form>
                             @endif
-
-                            <form action="{{ route('admin.instituicoes.deletar', $i->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja remover esta instituição permanentemente?')">Excluir</button>
-                            </form>
                         </td>
                     </tr>
                 @endforeach
@@ -69,7 +63,7 @@
         </table>
     @endif
 
-    <a href="{{ route('admin.instituicoes') }}" class="btn btn-secondary mt-3">Voltar para Pendentes</a>
+    <a href="{{ route('admin.instituicoes') }}" class="btn btn-secondary mt-3">Ir para Pendentes</a>
     <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Voltar para o Painel</a>
 </div>
 @endsection

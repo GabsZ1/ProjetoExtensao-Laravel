@@ -28,12 +28,11 @@ class AdminController extends Controller
             'nome' => $pendente->nome,
             'cnpj' => $pendente->cnpj,
             'email' => $pendente->email,
-            'password' => Hash::make($pendente->password),
+            'password' => $pendente->password,
             'telefone' => $pendente->telefone,
             'descricao' => $pendente->descricao,
             'endereco' => $pendente->endereco,
             'responsavel' => $pendente->responsavel,
-            'is_active' => true,
         ]);
 
         $pendente->delete();
@@ -95,14 +94,5 @@ class AdminController extends Controller
         $instituicao->update(['is_active' => true]);
 
         return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição ativada com sucesso!');
-    }
-
-    // Delete permanente (opcional)
-    public function deletar($id)
-    {
-        $instituicao = Instituicao::findOrFail($id);
-        $instituicao->delete();
-
-        return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição removida com sucesso!');
     }
 }

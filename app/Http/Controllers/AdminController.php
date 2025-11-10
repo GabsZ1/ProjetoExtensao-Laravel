@@ -66,7 +66,7 @@ class AdminController extends Controller
 
         $data = $request->validate([
             'email' => 'required|email',
-             'cnpj' => 'required|string|max:14',
+             'cnpj' => 'required|string|max:18',
         ]);
 
         $instituicao->update($data);

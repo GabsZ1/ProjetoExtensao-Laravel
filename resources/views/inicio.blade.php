@@ -41,7 +41,7 @@
 
                 <ul class="navbar-nav ms-auto">
                     <li class="nav-item">
-                        <a class="nav-link" href="{{ route('home') }}" style="color: white;">Entrar</a>
+                        <a class="nav-link" href="/login" style="color: white;">Entrar</a>
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#formulario-cadastro" style="color: white;">Cadastrar</a>

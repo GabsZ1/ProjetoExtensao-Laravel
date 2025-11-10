@@ -65,12 +65,8 @@ class AdminController extends Controller
         $instituicao = Instituicao::findOrFail($id);
 
         $data = $request->validate([
-            'nome' => 'required|string|max:255',
             'email' => 'required|email',
-            'telefone' => 'required|string',
-            'descricao' => 'nullable|string',
-            'endereco' => 'nullable|string',
-            'responsavel' => 'nullable|string',
+             'cnpj' => 'required|string|max:14',
         ]);
 
         $instituicao->update($data);

@@ -5,6 +5,7 @@ use App\Http\Controllers\InstituicaoPendenteController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\DoacaoController;
 use App\Http\Controllers\Auth\InstituicaoForgotPasswordController;
+use App\Http\Controllers\Auth\LoginController;
 use App\Http\Controllers\Auth\InstituicaoResetPasswordController;
 use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Auth;
@@ -144,5 +145,7 @@ Route::middleware(['auth:web', 'is_admin'])->group(function () {
 */
 Auth::routes(['register' => false]);
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
-    ->name('home');
+// Rota de Log Out de Instituição
+Route::post('/instituicao/logout', [LoginController::class, 'logoutInstituicao'])->name('instituicao.logout');
+
+// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

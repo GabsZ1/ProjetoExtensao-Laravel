@@ -71,13 +71,23 @@ class LoginController extends Controller
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
-        Auth::guard('instituicao')->logout();
 
         $request->session()->invalidate();
         $request->session()->regenerateToken();
 
         return redirect()->route('login');
     }
+
+    public function logoutInstituicao(Request $request)
+{
+    Auth::guard('instituicao')->logout();
+
+    $request->session()->invalidate();
+    $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+}
+
 
     /**
      * Middleware de autenticação

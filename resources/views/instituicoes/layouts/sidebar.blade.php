@@ -22,7 +22,7 @@
             <a href="{{ route('doacoes.index') }}" class="nav-link">Minhas Doações</a>
         </div>
 
-        <form id="logout-form" action="{{ route('logout') }}" method="POST" class="mt-auto">
+        <form id="logout-form" action="{{ route('instituicao.logout') }}" method="POST" class="mt-auto">
             @csrf
             <button type="submit" class="btn btn-outline-danger w-100 mt-3">
                 Sair

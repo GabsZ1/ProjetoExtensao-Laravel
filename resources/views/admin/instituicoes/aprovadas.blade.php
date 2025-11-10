@@ -33,6 +33,7 @@
                         <td>{{ $i->responsavel }}</td>
                         <td>{{ $i->cnpj }}</td>
                         <td>
+                            <a href="{{ route('admin.instituicoes.show', $i->id) }}" class="btn btn-sm btn-info">Ver</a>
                             <a href="{{ route('admin.instituicoes.editar', $i->id) }}" class="btn btn-primary btn-sm">Editar</a>
                             <form action="{{ route('admin.instituicoes.deletar', $i->id) }}" method="POST" style="display:inline;">
                                 @csrf

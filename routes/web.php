@@ -29,7 +29,7 @@ Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name
 // rotas das doações
 Route::resource('doacoes', DoacaoController::class);
 
-Route::middleware(['auth:web', 'isAdmin'])->group(function () {
+Route::middleware(['auth:web', 'is_admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
@@ -40,6 +40,7 @@ Route::delete('/admin/instituicoes/rejeitar/{id}', [AdminController::class, 'rej
 
 // Admin - Instituições Aprovadas
 Route::get('/admin/instituicoes/aprovadas', [AdminController::class, 'instituicoesAprovadas'])->name('admin.instituicoes.aprovadas');
+Route::get('/admin/instituicoes/detalhes/{id}', [AdminController::class, 'show'])->name('admin.instituicoes.show');
 Route::get('/admin/instituicoes/editar/{id}', [AdminController::class, 'editar'])->name('admin.instituicoes.editar');
 Route::put('/admin/instituicoes/atualizar/{id}', [AdminController::class, 'atualizar'])->name('admin.instituicoes.atualizar');
 Route::delete('/admin/instituicoes/deletar/{id}', [AdminController::class, 'deletar'])->name('admin.instituicoes.deletar');

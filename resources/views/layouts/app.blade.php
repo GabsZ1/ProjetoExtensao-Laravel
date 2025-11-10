@@ -30,12 +30,6 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <!-- Links à esquerda -->
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ url('admin/relatorios') }}">Relatórios</a>
-                        </li>
-                    </ul>
 
                     <!-- Botão de sair -->
                     <ul class="navbar-nav ms-auto align-items-center">

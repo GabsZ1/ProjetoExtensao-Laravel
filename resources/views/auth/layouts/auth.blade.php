@@ -8,7 +8,7 @@
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <link rel="icon" href="{{ asset('images/logo-sem-fundo.png') }}" type="image/png">
-    <title>Conexão Solidária - Autenticação</title>
+    <title>@yield('title', 'Login')</title>
 
     <!-- Bootstrap -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
@@ -54,11 +54,11 @@
         </div>
     </nav>
 
-    {{-- CONTEÚDO DAS VIEWS --}}
     @yield('content')
 
     <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
 
 </body>
+
 </html>

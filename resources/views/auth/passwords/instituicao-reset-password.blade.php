@@ -1,5 +1,7 @@
 @extends('auth.layouts.auth')
 
+@section('title', 'Redefinir Senha')
+
 @section('content')
 <div class="container-principal">
     <div class="card-auth">

@@ -1,6 +1,6 @@
 @extends('instituicoes.layouts.sidebar')
 
-@section('title', 'Doações')
+@section('title', 'Salvar Doação')
 
 @section('content')
 

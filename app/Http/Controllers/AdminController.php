@@ -87,7 +87,7 @@ class AdminController extends Controller
         return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição removida com sucesso!');
     }
 
-    public function show($id)
+    public function showAprovada($id)
     {
         $instituicao = Instituicao::findOrFail($id);
 
@@ -95,4 +95,15 @@ class AdminController extends Controller
             'instituicao' => $instituicao
         ]);
     }
+
+
+    public function showPendente($id)
+    {
+        $instituicao = InstituicaoPendente::findOrFail($id);
+
+        return view('admin.instituicoes.show', [
+            'instituicao' => $instituicao
+        ]);
+    }
+
 }

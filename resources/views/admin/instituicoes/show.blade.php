@@ -16,7 +16,8 @@
     <p><strong>Endereço:</strong> {{ $instituicao->endereco ?? '-' }}</p>
     <p><strong>Responsável:</strong> {{ $instituicao->responsavel ?? '-' }}</p>
 
-    <a href="{{ route('admin.instituicoes.aprovadas') }}" class="btn btn-secondary">Voltar</a>
+    <a href="{{ route($instituicao instanceof App\Models\Instituicao ? 'admin.instituicoes.aprovadas' : 'admin.instituicoes') }}" class="btn btn-secondary">Voltar</a>
+
 </div>
 
 @endsection

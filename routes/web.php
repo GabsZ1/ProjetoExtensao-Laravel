@@ -33,14 +33,15 @@ Route::middleware(['auth:web', 'is_admin'])->group(function () {
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
 });
 
-// Admin - Instituições
+// Admin - Instituições Pendentes
 Route::get('/admin/instituicoes', [AdminController::class, 'instituicoesPendentes'])->name('admin.instituicoes');     // Lista instituições pendentes
 Route::post('/admin/instituicoes/aprovar/{id}', [AdminController::class, 'aprovar'])->name('admin.instituicoes.aprovar');  // Aprovar instituição
 Route::delete('/admin/instituicoes/rejeitar/{id}', [AdminController::class, 'rejeitar'])->name('admin.instituicoes.rejeitar');
+Route::get('/admin/intituicoes/detalhes/{id}', [AdminController::class, 'showPendente'])->name('admin.intituicoes.show');
 
 // Admin - Instituições Aprovadas
 Route::get('/admin/instituicoes/aprovadas', [AdminController::class, 'instituicoesAprovadas'])->name('admin.instituicoes.aprovadas');
-Route::get('/admin/instituicoes/detalhes/{id}', [AdminController::class, 'show'])->name('admin.instituicoes.show');
+Route::get('/admin/instituicoes/detalhes/{id}', [AdminController::class, 'showAprovada'])->name('admin.instituicoes.show');
 Route::get('/admin/instituicoes/editar/{id}', [AdminController::class, 'editar'])->name('admin.instituicoes.editar');
 Route::put('/admin/instituicoes/atualizar/{id}', [AdminController::class, 'atualizar'])->name('admin.instituicoes.atualizar');
 Route::delete('/admin/instituicoes/deletar/{id}', [AdminController::class, 'deletar'])->name('admin.instituicoes.deletar');

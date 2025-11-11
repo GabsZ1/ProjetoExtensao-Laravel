@@ -33,6 +33,7 @@
                         <td>{{ $inst->telefone }}</td>
                         <td>{{ $inst->responsavel }}</td>
                         <td>
+                            <a href="{{ route('admin.intituicoes.show', $inst->id) }}" class="btn btn-sm btn-info">Ver</a>
                             <form action="{{ route('admin.instituicoes.aprovar', $inst->id) }}" method="POST" style="display:inline;">
                                 @csrf
                                 <button type="submit" class="btn btn-success btn-sm">Aprovar</button>

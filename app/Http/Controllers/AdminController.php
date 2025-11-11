@@ -65,7 +65,7 @@ class AdminController extends Controller
 
         $data = $request->validate([
             'email' => 'required|email',
-             'cnpj' => 'required|string|max:18',
+            'cnpj' => 'required|string|max:18',
         ]);
 
         $instituicao->update($data);
@@ -90,4 +90,23 @@ class AdminController extends Controller
 
         return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição ativada com sucesso!');
     }
+
+    public function showAprovada($id)
+    {
+        $instituicao = Instituicao::findOrFail($id);
+
+        return view('admin.instituicoes.show', [
+            'instituicao' => $instituicao
+        ]);
+    }
+
+    public function showPendente($id)
+    {
+        $instituicao = InstituicaoPendente::findOrFail($id);
+
+        return view('admin.instituicoes.show', [
+            'instituicao' => $instituicao
+        ]);
+    }
+
 }

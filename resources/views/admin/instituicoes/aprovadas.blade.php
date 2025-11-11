@@ -33,7 +33,7 @@
                         <td>{{ $i->telefone }}</td>
                         <td>{{ $i->responsavel }}</td>
                         <td>{{ $i->cnpj }}</td>
-                        <td>
+                        <td>                          
                             @if($i->is_active)
                                 <span class="badge bg-success">Ativa</span>
                             @else
@@ -41,6 +41,9 @@
                             @endif
                         </td>
                         <td>
+                        
+                            <a href="{{ route('admin.instituicoes.show', $i->id) }}" class="btn btn-sm btn-info">Ver</a>
+                            
                             <a href="{{ route('admin.instituicoes.editar', $i->id) }}" class="btn btn-primary btn-sm">Editar</a>
 
                             @if($i->is_active)

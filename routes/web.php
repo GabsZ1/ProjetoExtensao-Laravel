@@ -80,24 +80,21 @@ Route::middleware(['auth:instituicao', 'isInstituicao'])->group(function () {
         ->name('doacoes.destroy');
 });
 
-
 /*
 |--------------------------------------------------------------------------
 | Rotas de Doações
 |--------------------------------------------------------------------------
 */
 Route::resource('doacoes', DoacaoController::class);
-
 /*
 |--------------------------------------------------------------------------
 | Rotas do Admin
 |--------------------------------------------------------------------------
 */
 Route::middleware(['auth:web', 'is_admin'])->group(function () {
-
     // Dashboard
     Route::get('/admin', [AdminController::class, 'index'])->name('admin.dashboard');
-
+}
     /*
     |----------------------------------------------------------
     | Instituições Pendentes
@@ -111,6 +108,9 @@ Route::middleware(['auth:web', 'is_admin'])->group(function () {
 
     Route::delete('/admin/instituicoes/rejeitar/{id}', [AdminController::class, 'rejeitar'])
         ->name('admin.instituicoes.rejeitar');
+  
+    Route::get('/admin/intituicoes/detalhes/{id}', [AdminController::class, 'showPendente'])
+        ->name('admin.intituicoes.show');
 
     /*
     |----------------------------------------------------------
@@ -125,7 +125,9 @@ Route::middleware(['auth:web', 'is_admin'])->group(function () {
 
     Route::put('/admin/instituicoes/atualizar/{id}', [AdminController::class, 'atualizar'])
         ->name('admin.instituicoes.atualizar');
-
+                                                   
+    Route::get('/admin/instituicoes/detalhes/{id}', [AdminController::class, 'showAprovada'])
+        ->name('admin.instituicoes.show');                                                                                                 
     /*
     |----------------------------------------------------------
     | Ativar / Desativar Instituição

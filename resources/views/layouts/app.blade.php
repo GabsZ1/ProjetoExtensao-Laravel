@@ -6,50 +6,51 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
     <link rel="icon" href="{{ asset('images/logo-sem-fundo.png') }}" type="image/png">
+    <title>Conexão Solidária</title>
 
-    <title>Admin</title>
-
-    <!-- Fonts e CSS -->
+    <link rel="dns-prefetch" href="//fonts.bunny.net">
     <link href="https://fonts.bunny.net/css?family=Nunito" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/app.css') }}">
+
+    <!-- jQuery e máscaras -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
 </head>
 
 <body>
-    <div id="app">
-        <nav class="navbar navbar-expand-md shadow-sm">
-            <div class="container">
-                <a class="navbar-brand" href="{{ url('admin') }}">
-                    Bem-vindo, {{ Auth::user()->nome ?? 'Admin' }}!
-                </a>
+    <nav class="navbar navbar-expand-lg" style="background-color: #4935E3;">
+        <div class="container-fluid">
 
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="{{ __('Alternar navegação') }}">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+            <a class="navbar-brand d-flex align-items-center">
+                <img src="{{ asset('images/logo-sem-fundo.png') }}" alt="Logo MeuSite" width="30" height="30" class="me-2">
+                <strong style="color: white;">Conexão Solidária</strong>
+            </a>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
 
-                    <!-- Botão de sair -->
-                    <ul class="navbar-nav ms-auto align-items-center">
-                        <li class="nav-item">
-                            <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-inline">
-                                @csrf
-                                <button type="submit" class="btn btn-outline-danger btn-sm">
-                                    {{ __('Sair') }}
-                                </button>
-                            </form>
-                        </li>
-                    </ul>
-                </div>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="/login" style="color: white;">Entrar</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#formulario-cadastro" style="color: white;">Cadastrar</a></li>
+                </ul>
             </div>
-        </nav>
+        </div>
+    </nav>
 
-        <main class="py-4">
-            @yield('content')
-        </main>
-    </div>
+    @yield('content')
+    
+    <script>
+        $(document).ready(function() {
+            $('#cnpj').mask('00.000.000/0000-00');
+            $('#telefone').mask('(00) 00000-0000');
+        });
+    </script>
+
 </body>
 
 </html>

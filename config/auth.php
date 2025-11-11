@@ -41,7 +41,7 @@ return [
             'provider' => 'users',
         ],
 
-        'instituicao' => [ 
+        'instituicao' => [
             'driver' => 'session',
             'provider' => 'instituicaos',
         ],
@@ -95,11 +95,17 @@ return [
     'passwords' => [
         'users' => [
             'provider' => 'users',
-            'table' => 'password_resets',
+            'table' => 'password_reset_tokens',
             'expire' => 60,
-            'throttle' => 60,
+        ],
+
+        'instituicaos' => [
+            'provider' => 'instituicaos',
+            'table' => 'password_reset_tokens',
+            'expire' => 60,
         ],
     ],
+
 
     /*
     |--------------------------------------------------------------------------

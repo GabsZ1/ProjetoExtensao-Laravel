@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Instituicao;
 use App\Models\InstituicaoPendente;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {
@@ -17,7 +16,7 @@ class AdminController extends Controller
     public function instituicoesPendentes()
     {
         $pendentes = InstituicaoPendente::all();
-        return view('admin.instituicoes.index', compact('pendentes')); // Passa as instituições pendentes para a view
+        return view('admin.instituicoes.index', compact('pendentes'));
     }
 
     public function aprovar($id)
@@ -28,7 +27,7 @@ class AdminController extends Controller
             'nome' => $pendente->nome,
             'cnpj' => $pendente->cnpj,
             'email' => $pendente->email,
-            'password' => Hash::make($pendente->password),
+            'password' => $pendente->password,
             'telefone' => $pendente->telefone,
             'descricao' => $pendente->descricao,
             'endereco' => $pendente->endereco,
@@ -65,26 +64,31 @@ class AdminController extends Controller
         $instituicao = Instituicao::findOrFail($id);
 
         $data = $request->validate([
-            'nome' => 'required|string|max:255',
             'email' => 'required|email',
-            'telefone' => 'required|string',
-            'descricao' => 'nullable|string',
-            'endereco' => 'nullable|string',
-            'responsavel' => 'nullable|string',
-
+            'cnpj' => 'required|string|max:18',
         ]);
 
-        $instituicao->update($data);// atualiza com os dados validados
+        $instituicao->update($data);
 
         return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição atualizada com sucesso!');
     }
 
-    public function deletar($id)
+    // Desativa a instituição
+    public function desativar($id)
     {
         $instituicao = Instituicao::findOrFail($id);
-        $instituicao->delete();
+        $instituicao->update(['is_active' => false]);
 
-        return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição removida com sucesso!');
+        return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição desativada com sucesso!');
+    }
+
+    // Reativa a instituição
+    public function ativar($id)
+    {
+        $instituicao = Instituicao::findOrFail($id);
+        $instituicao->update(['is_active' => true]);
+
+        return redirect()->route('admin.instituicoes.aprovadas')->with('success', 'Instituição ativada com sucesso!');
     }
 
     public function showAprovada($id)
@@ -95,7 +99,6 @@ class AdminController extends Controller
             'instituicao' => $instituicao
         ]);
     }
-
 
     public function showPendente($id)
     {

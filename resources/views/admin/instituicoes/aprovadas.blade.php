@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container mt-4">
@@ -21,6 +21,7 @@
                     <th>Telefone</th>
                     <th>Responsável</th>
                     <th>CNPJ</th>
+                    <th>Status</th>
                     <th>Ações</th>
                 </tr>
             </thead>
@@ -32,14 +33,32 @@
                         <td>{{ $i->telefone }}</td>
                         <td>{{ $i->responsavel }}</td>
                         <td>{{ $i->cnpj }}</td>
+                        <td>                          
+                            @if($i->is_active)
+                                <span class="badge bg-success">Ativa</span>
+                            @else
+                                <span class="badge bg-secondary">Desativada</span>
+                            @endif
+                        </td>
                         <td>
+                        
                             <a href="{{ route('admin.instituicoes.show', $i->id) }}" class="btn btn-sm btn-info">Ver</a>
+                            
                             <a href="{{ route('admin.instituicoes.editar', $i->id) }}" class="btn btn-primary btn-sm">Editar</a>
-                            <form action="{{ route('admin.instituicoes.deletar', $i->id) }}" method="POST" style="display:inline;">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Deseja remover esta instituição?')">Remover</button>
-                            </form>
+
+                            @if($i->is_active)
+                                <form action="{{ route('admin.instituicoes.desativar', $i->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-warning btn-sm" onclick="return confirm('Deseja desativar esta instituição?')">Desativar</button>
+                                </form>
+                            @else
+                                <form action="{{ route('admin.instituicoes.ativar', $i->id) }}" method="POST" style="display:inline;">
+                                    @csrf
+                                    @method('PUT')
+                                    <button type="submit" class="btn btn-success btn-sm" onclick="return confirm('Deseja reativar esta instituição?')">Ativar</button>
+                                </form>
+                            @endif
                         </td>
                     </tr>
                 @endforeach
@@ -47,7 +66,7 @@
         </table>
     @endif
 
-    <a href="{{ route('admin.instituicoes') }}" class="btn btn-secondary mt-3">Voltar para Pendentes</a>
+    <a href="{{ route('admin.instituicoes') }}" class="btn btn-secondary mt-3">Ir para Pendentes</a>
     <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Voltar para o Painel</a>
 </div>
 @endsection

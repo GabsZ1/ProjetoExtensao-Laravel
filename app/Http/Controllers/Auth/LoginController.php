@@ -8,12 +8,10 @@ use Illuminate\Support\Facades\Auth;
 
 class LoginController extends Controller
 {
-    /**
-     * Exibe o formulário de login.
-     */
+    // Exibe o formulário de login.
     public function showLoginForm()
     {
-        return view('auth.login'); // o caminho da sua view de login
+        return view('auth.login');
     }
 
     /**
@@ -27,7 +25,7 @@ class LoginController extends Controller
             'password' => ['required'],
         ]);
 
-        // 1️⃣ Tenta autenticar usando o guard 'web' (usuário/admin)
+        // 1 - Tenta autenticar usando o guard 'web' (admin)
         if (Auth::guard('web')->attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
@@ -38,29 +36,46 @@ class LoginController extends Controller
                 return redirect()->route('admin.dashboard');
             }
 
-            // Se for usuário comum → dashboard de instituição (ou outro local)
+            // Se for usuário comum → dashboard de instituição
             return redirect()->route('instituicoes.index');
         }
 
-        // 2️⃣ Tenta autenticar usando o guard 'instituicao' (tabela instituicaos)
+        // 2️ - Tenta autenticar usando o guard 'instituicao' (tabela instituicaos)
         if (Auth::guard('instituicao')->attempt($credentials, $request->boolean('remember'))) {
             $request->session()->regenerate();
 
+            $inst = Auth::guard('instituicao')->user();
+
+            if (! $inst->is_active) {
+                Auth::guard('instituicao')->logout();
+                return back()->withErrors([
+                    'email' => 'Sua instituição foi desativada pelo administrador.'
+                ])->onlyInput('email');
+            }
+
             return redirect()->route('instituicoes.index');
         }
 
-        // 3️⃣ Se não encontrar em nenhum dos guards
+        // 3️ - Se não encontrar em nenhum dos guards
         return back()->withErrors([
             'email' => 'As credenciais não correspondem aos nossos registros.',
         ])->onlyInput('email');
     }
 
-    /**
-     * Logout personalizado — encerra sessão em ambos os guards
-     */
+    // Desloga o admin, destrói a sessão atual, cria um novo CSRF token e redireciona para o login.
     public function logout(Request $request)
     {
         Auth::guard('web')->logout();
+
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
+
+        return redirect()->route('login');
+    }
+
+    // Desloga a instituição, destrói a sessão atual, cria um novo CSRF token e redireciona para o login.
+    public function logoutInstituicao(Request $request)
+    {
         Auth::guard('instituicao')->logout();
 
         $request->session()->invalidate();
@@ -69,9 +84,7 @@ class LoginController extends Controller
         return redirect()->route('login');
     }
 
-    /**
-     * Middleware de autenticação
-     */
+    // Middleware de autenticação
     public function __construct()
     {
         $this->middleware('guest')->except('logout');

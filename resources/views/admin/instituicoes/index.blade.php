@@ -1,4 +1,4 @@
-@extends('layouts.app')
+@extends('admin.layouts.app')
 
 @section('content')
 <div class="container mt-4">
@@ -52,6 +52,7 @@
     @endif
 
     <a href="{{ route('admin.dashboard') }}" class="btn btn-secondary mt-3">Voltar para o Painel</a>
-
+    <a href="{{ route('admin.instituicoes.aprovadas') }}" class="btn btn-secondary mt-3">Ver Aprovadas</a>
+    
 </div>
 @endsection

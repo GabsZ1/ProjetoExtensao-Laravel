@@ -2,36 +2,38 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Instituicao;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-
 class InstituicaoController extends Controller
 {
-    public function index(){
-        $instituicoes = Instituicao::get();
-        return view('instituicoes.index', [
-            'instituicoes' => $instituicoes
-        ]);
-    }
-
-    public function store(Request $request)
+    /**
+     * Dashboard da instituição logada.
+     * Mostra total de doações, valor arrecadado, quantidade de doadores e últimas doações.
+     */
+    public function dashboard()
     {
-        $data = $request->validate([
-            'nome' => 'required|string|max:255',
-            'cnpj' => 'required|string|max:18|unique:instituicaos',
-            'email' => 'required|email|unique:instituicaos',
-            'password' => 'required|min:6|confirmed',
-            'telefone' => 'required|string',
-            'descricao' => 'required|string',
-            'endereco' => 'required|string',
-            'responsavel' => 'required|string',
-        ]);
+        $instituicao = auth()->user(); // Instância da Instituição logada
 
-        $data['password'] = Hash::make($data['password']);
+        // Contagem total de doações
+        $totalDoacoes = $instituicao->doacoes()->count();
 
-        Instituicao::create($data);
+        // Soma do valor das doações
+        $valorTotal = $instituicao->doacoes()->sum('valor');
 
-        return redirect()->route('login')->with('success', 'Cadastro realizado com sucesso! Faça login para continuar.');
+        // Contagem de doadores distintos
+        $doadores = $instituicao->doacoes()
+            ->select('nome_doador', 'email_doador')
+            ->distinct()
+            ->get()
+            ->count();
+
+        // Últimas 5 doações
+        $ultimasDoacoes = $instituicao->doacoes()->latest()->take(5)->get();
+
+        return view('instituicoes.dashboard', compact(
+            'instituicao',
+            'totalDoacoes',
+            'valorTotal',
+            'doadores',
+            'ultimasDoacoes'
+        ));
     }
 }

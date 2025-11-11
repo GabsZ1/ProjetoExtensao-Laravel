@@ -14,7 +14,7 @@ body {
 /* Sidebar */
 .sidebar {
     width: 230px;
-    background: linear-gradient(180deg, #1e3a8a, #1d4ed8);
+    background: linear-gradient(180deg, #443eb1, #635bff);
     color: #fff;
     padding: 30px 20px;
     display: flex;
@@ -51,7 +51,7 @@ body {
 /* Cabeçalho */
 .dashboard-header h1 {
     font-weight: 700;
-    color: #1e3a8a;
+    color: #443eb1;
 }
 
 .dashboard-header p {

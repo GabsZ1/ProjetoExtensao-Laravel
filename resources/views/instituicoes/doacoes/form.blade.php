@@ -25,6 +25,8 @@
 
         <div class="mb-3">
             <label for="nome_doador" class="form-label">Nome do Doador</label>
+            <!-- old() recupera o valor enviado anteriormente em caso de erro de validação.
+            Se não existir valor antigo, usa o valor da doação (edição). -->
             <input type="text" name="nome_doador" id="nome_doador" class="form-control"
                 value="{{ old('nome_doador', $doacao->nome_doador ?? '') }}" required>
         </div>

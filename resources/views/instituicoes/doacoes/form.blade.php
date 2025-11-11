@@ -37,9 +37,13 @@
 
         <div class="mb-3">
             <label for="telefone_doador" class="form-label">Telefone do Doador</label>
-            <input type="text" name="telefone_doador" id="telefone_doador" class="form-control"
+            <input type="text"
+                name="telefone_doador"
+                id="telefone_doador"
+                class="form-control"
                 value="{{ old('telefone_doador', $doacao->telefone_doador ?? '') }}">
         </div>
+
 
         <div class="mb-3">
             <label for="valor" class="form-label">Valor (R$)</label>

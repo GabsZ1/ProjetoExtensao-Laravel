@@ -35,5 +35,16 @@
         @yield('content')
     </div>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.mask/1.14.16/jquery.mask.min.js"></script>
+
+    <script>
+        $(document).ready(function() {
+            $('#telefone_doador').mask('(00) 00000-0000');
+        });
+    </script>
+
+
 </body>
+
 </html>

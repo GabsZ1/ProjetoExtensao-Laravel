@@ -16,7 +16,7 @@ use Illuminate\Support\Facades\Auth;
 |--------------------------------------------------------------------------
 */
 Route::get('/', function () {
-    return view('inicio');
+    return view('home');
 });
 
 // Cadastro de instituição pendente
@@ -140,12 +140,10 @@ Route::middleware(['auth:web', 'is_admin'])->group(function () {
     
 /*
 |--------------------------------------------------------------------------
-| Rotas de Autenticação (Admin/User padrão)
+| Rota de Autenticação (Admin/Instituição)
 |--------------------------------------------------------------------------
 */
 Auth::routes(['register' => false]);
 
 // Rota de Log Out de Instituição
 Route::post('/instituicao/logout', [LoginController::class, 'logoutInstituicao'])->name('instituicao.logout');
-
-// Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');

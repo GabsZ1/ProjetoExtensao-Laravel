@@ -8,10 +8,8 @@ use Illuminate\Support\Facades\Hash;
 
 class InstituicaoPendenteController extends Controller
 {
-    // Método para salvar o cadastro enviado pelo formulário
     public function store(Request $request)
     {
-        // Validação básica dos campos
         $request->validate([
             'nome' => 'required|string|max:255',
             'cnpj' => 'required|string|size:18|unique:instituicao_pendentes,cnpj',
@@ -28,7 +26,6 @@ class InstituicaoPendenteController extends Controller
         $data['password'] = Hash::make($request->password);
 
         InstituicaoPendente::create($data);
-
 
         // Redireciona de volta com mensagem de sucesso
         return redirect()->back()->with('success', 'Cadastro enviado com sucesso! O admin irá analisá-lo.');

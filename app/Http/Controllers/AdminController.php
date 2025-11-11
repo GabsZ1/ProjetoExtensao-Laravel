@@ -5,7 +5,6 @@ namespace App\Http\Controllers;
 use App\Models\Instituicao;
 use App\Models\InstituicaoPendente;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
 
 class AdminController extends Controller
 {

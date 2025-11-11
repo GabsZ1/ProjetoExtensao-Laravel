@@ -9,14 +9,10 @@ use App\Models\Instituicao;
 
 class InstituicaoResetPasswordController extends Controller
 {
-    /**
-     * Para onde redirecionar após o reset de senha.
-     */
+    // Para onde redirecionar após o reset de senha.
     protected $redirectTo = '/login';
 
-    /**
-     * Mostra o formulário de reset de senha.
-     */
+    // Mostra o formulário de reset de senha.
     public function showResetForm(Request $request, $token = null)
     {
         return view('auth.passwords.instituicao-reset-password', [
@@ -25,9 +21,7 @@ class InstituicaoResetPasswordController extends Controller
         ]);
     }
 
-    /**
-     * Realiza o reset da senha.
-     */
+    // Realiza o reset da senha.
     public function reset(Request $request)
     {
         // Validação dos campos
@@ -43,7 +37,7 @@ class InstituicaoResetPasswordController extends Controller
             function (Instituicao $user, $password) {
                 $user->password = bcrypt($password);
                 $user->save(); // senha atualizada
-                // ❌ Não loga automaticamente
+                // XXXXX Não loga automaticamente
             }
         );
 

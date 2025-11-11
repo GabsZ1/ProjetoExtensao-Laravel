@@ -57,6 +57,7 @@ class DoacaoController extends Controller
         $doacao = Doacao::where('instituicao_id', Auth::guard('instituicao')->id())
             ->findOrFail($id);
 
+        // compact cria um array ['doacao' => $doacao] e envia para a view.
         return view('instituicoes.doacoes.show', compact('doacao'));
     }
 
@@ -71,6 +72,7 @@ class DoacaoController extends Controller
         return redirect()->route('doacoes.index')->with('success', 'Doação removida com sucesso!');
     }
 
+    // Busca a doação pelo ID e envia os dados para a view de edição.
     public function edit($id)
     {
         $doacao = Doacao::findOrFail($id);
@@ -79,6 +81,7 @@ class DoacaoController extends Controller
         ]);
     }
 
+    // Valida os dados enviados, atualiza a doação no banco e redireciona de volta com mensagem de sucesso.
     public function update(Request $request, $id)
     {
         $request->validate([
@@ -88,7 +91,9 @@ class DoacaoController extends Controller
 
         $doacao = Doacao::findOrFail($id);
 
+        // Pega todos os campos enviados, menos os campos internos do formulário.
         $dados = $request->except('_token', '_method');
+        // Atualiza a doação com os novos valores.
         $doacao->update($dados);
 
         return redirect()->route('doacoes.index')->with('success', 'Doação atualizada com sucesso!');
